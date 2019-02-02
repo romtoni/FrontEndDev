@@ -36,6 +36,33 @@ $.ajax({
 
 });
 
+function onLoad() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://al-quran-8d642.firebaseio.com/data.json',
+        data: '',
+        dataType: 'json',
+        success: function (result) {
+            //console.log(result[0].nama);
+            $('#daftar-surat').html('Daftar Surat');
+
+            list_surat = '<ul class="list-group ">';
+            $.each(result, function (i, data) {
+                //  console.log(i);
+                list_surat += `
+                <li class="list-group-item kolom-daftar">
+                    <input id="id_surat" type="hidden" value="` + i + `"> 
+                    <a href = "#" onClick="tampilkanDetail(` + i + `)" > ` + data.nomor + `. ` + data.nama + ` (` + data.asma + `) </a>
+                </li>`;
+            });
+            list_surat += '</ul>';
+            $('#list-surat').html(list_surat);
+
+            tampilkanDetail(0);
+        }
+
+    });
+}
 
 function tampilkanDetail(id_surat_param) {
     id_surat = id_surat_param;
