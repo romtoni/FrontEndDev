@@ -84,5 +84,5 @@ function tampilkanDetail(id_surat_param) {
 }
 
 //Loading Awal
-tampilkanDaftar();
+tampilkanDaftar(0);
 tampilkanDetail(0);
