@@ -1,3 +1,5 @@
+//Inisisasi variabel
+
 var list_surat;
 var judul_surat;
 var id_surat;
@@ -10,35 +12,42 @@ var type_surat;
 var urut_surat;
 var detail_surat;
 
-$.ajax({
-    type: 'GET',
-    url: 'https://al-quran-8d642.firebaseio.com/data.json',
-    data: '',
-    dataType: 'json',
-    success: function (result) {
-        //console.log(result[0].nama);
-        $('#daftar-surat').html('Daftar Surat');
+//fungsi daftar surat
+function tampilkanDaftar() {
+    $.ajax({
+        type: 'GET',
+        url: 'https://al-quran-8d642.firebaseio.com/data.json',
+        data: '',
+        dataType: 'json',
+        success: function (result) {
+            //console.log(result[0].nama);
+            $('#daftar-surat').html('Daftar Surat');
 
-        list_surat = '<ul class="list-group ">';
-        $.each(result, function (i, data) {
-            //  console.log(i);
-            list_surat += `
-            <li class="list-group-item kolom-daftar">
-                <input id="id_surat" type="hidden" value="` + i + `"> 
-                <a href = "#" onClick="tampilkanDetail(` + i + `)" > ` + data.nomor + `. ` + data.nama + ` (` + data.asma + `) </a>
-            </li>`;
-        });
-        list_surat += '</ul>';
-        $('#list-surat').html(list_surat);
+            total_surat = 0;
+            list_surat = '<ul class="list-group ">';
+            $.each(result, function (i, data) {
+                //  console.log(i);
+                list_surat += `
+                <li id="listno` + i + `" class="list-group-item list-group-item-action list-group-item-light kolom-daftar">
+                    <input id="id_surat" type="hidden" value="` + i + `"> 
+                    <a href = "#" onClick="tampilkanDetail(` + i + `)" > ` + data.nomor + `. ` + data.nama + ` (` + data.asma + `) </a>
+                </li>`;
 
-        tampilkanDetail(0);
-    }
+            });
+            list_surat += '</ul>';
+            $('#list-surat').html(list_surat);
 
-});
+        }
+    });
+}
 
+//fungsi detail surat
 function tampilkanDetail(id_surat_param) {
     id_surat = id_surat_param;
-    //console.log(id_surat);
+
+    $('.list-group-item').addClass('kolom-daftar');
+    $('#listno' + id_surat).removeClass('kolom-daftar');
+
 
     $.ajax({
         type: 'GET',
@@ -69,5 +78,8 @@ function tampilkanDetail(id_surat_param) {
             $('#detail-surat').html(detail_surat);
         }
     });
-
 }
+
+//Loading Awal
+tampilkanDaftar();
+tampilkanDetail(0);
