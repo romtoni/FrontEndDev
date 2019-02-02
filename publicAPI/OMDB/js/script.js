@@ -10,7 +10,7 @@ function search_movies() {
     //error : failed to connect to API
 
     $.ajax({
-        type: 'get',
+        type: 'GET',
         url: 'http://www.omdbapi.com',
         data: {
             'apikey': 'aa46e00f',
@@ -48,43 +48,6 @@ function search_movies() {
                                         </div>`);
             }
 
-        }
-    });
-}
-
-
-function detail_movies() {
-    $.ajax({
-        type: 'get',
-        url: 'http://www.omdbapi.com',
-        data: {
-            'apikey': 'aa46e00f',
-            'i': $('.see-detail').data('id')
-        },
-        dataType: 'json',
-        success: function (movie) {
-            console.log(movie);
-            if (movie.Response === 'True') {
-                $('.modal-body').html(`
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <img src="` + movie.Poster + `" class="img-fluid">
-                                            </div>
-
-                                            <div class="row-md-8">
-                                                <ul class = "list-group" >
-                                                    <li class = "list-group-item" ><h3> ` + movie.Title + `</h3></li>
-                                                    <li class = "list-group-item" >Released : ` + movie.Released + `</li> 
-                                                    <li class = "list-group-item" >Genre : ` + movie.Genre + `</li> 
-                                                    <li class = "list-group-item" >Director : ` + movie.Director + `</li> 
-                                                    <li class = "list-group-item" >Actors : ` + movie.Actors + `</li> 
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `);
-            }
         }
     });
 }
