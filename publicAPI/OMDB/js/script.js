@@ -1,10 +1,11 @@
-$('#search-button').on('click', function () {
+function search_movies() {
+    $('#movie-list').html('');
 
-    //AJAX JQUERY
+    //AJAX jQuery
     //type : request method
     //url : link to API
     //data : parameter send
-    //dataType : return value
+    //dataType : return value type
     //success : success connected to API
     //error : failed to connect to API
 
@@ -21,7 +22,6 @@ $('#search-button').on('click', function () {
 
             if (result.Response === 'True') {
                 let listmovies = result.Search;
-
                 $.each(listmovies, function (i, data) {
                     $('#movie-list').append(` <div class="col-md-4">
                                                     <div class="card mb-3">
@@ -36,6 +36,8 @@ $('#search-button').on('click', function () {
                                                 </div> `);
 
                 });
+
+                $('#search-input').val('');
             } else {
                 $('#movie-list').html(`<div class="col">
                                             <h1 class="text-center">` + result.Error + `</h1>
@@ -44,5 +46,15 @@ $('#search-button').on('click', function () {
 
         }
     });
+}
 
+
+$('#search-button').on('click', function () {
+    search_movies();
+});
+
+$('#search-input').on('keyup', function (e) {
+    if (e.keyCode === 13) {
+        search_movies();
+    }
 });
