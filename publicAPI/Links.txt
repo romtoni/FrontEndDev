@@ -1,5 +1,5 @@
 Daftar Public API
 
-1. https://www.youtube.com/redirect?q=https%3A%2F%2Fgithub.com%2Ffarizdotid%2FDAFTAR-API-LOKAL-INDONESIA&event=video_description&v=TvOFqREy7A8&redir_token=OaQ6TRZ-KWwG4KaXT6NqIzDAZwR8MTU0OTE1OTMyM0AxNTQ5MDcyOTIz
-2. https://www.youtube.com/redirect?q=https%3A%2F%2Fgithub.com%2Ftoddmotto%2Fpublic-apis&event=video_description&v=TvOFqREy7A8&redir_token=OaQ6TRZ-KWwG4KaXT6NqIzDAZwR8MTU0OTE1OTMyM0AxNTQ5MDcyOTIz
+1. https://github.com/toddmotto/public-apis
+2. https://github.com/farizdotid/DAFTAR-API-LOKAL-INDONESIA
 3. https://any-api.com/
