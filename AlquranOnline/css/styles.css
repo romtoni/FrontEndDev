@@ -1,0 +1,43 @@
+.header {
+    background-color: lawngreen;
+}
+
+.kolom-daftar {
+    background-color: yellow;
+    border: none;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+
+}
+
+.kolom-detail {
+    background-color: orange;
+}
+
+.judul {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.detail {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.list-group {
+    background-color: yellow;
+}
+
+.list-group {
+    background-color: yellow;
+}
+
+.keterangan {
+    background-color: orange;
+    border: none;
+
+}
