@@ -63,7 +63,7 @@ function tampilkanDetail(id_surat_param) {
                                 <li class="list-group-item keterangan"><strong>Jumlah Ayat</strong> : ` + ayat_surat + `</li>
                                 <li class="list-group-item keterangan"><strong>Tipe</strong> : ` + type_surat.charAt(0).toUpperCase() + type_surat.slice(1) + `</li>
                                 <li class="list-group-item keterangan"><strong>Keterangan</strong> : ` + keterangan_surat + `</li>
-                                <li class="list-group-item keterangan"><strong>Murotal</strong> : <a target="_blank" href="` + audio_surat + `">` + judul_surat + `</li>
+                                <li class="list-group-item keterangan"><strong>Murotal</strong> : <a class="murotal" target="_blank" href="` + audio_surat + `">` + judul_surat + `</li>
                             </ul>`;
 
             $('#nama-surat').html(judul_surat);

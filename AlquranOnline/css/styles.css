@@ -9,6 +9,10 @@
 
 a {
     color: black;
+
+}
+
+.murotal {
     text-decoration: underline;
 
 }
@@ -26,6 +30,14 @@ a {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
+}
+
+.isi-list {
+    min-height: 500px;
+}
+
+.isi-detail {
+    min-height: 500px;
 }
 
 .list-group {
