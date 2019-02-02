@@ -1,2 +1,2 @@
 # FrontEndDev
-Resources as Front End Developer 
+Example Sources as Front End Developer 
