@@ -20,7 +20,7 @@ function search_movies() {
         success: function (result) {
             //console.log(result);
 
-            if (result.Response === 'True') {
+            if (result.Response == 'True') {
                 let listmovies = result.Search;
                 $.each(listmovies, function (i, data) {
                     $('#movie-list').append(` <div class="col-md-4">
@@ -30,7 +30,11 @@ function search_movies() {
                                                             <h5 class = "card-title" > ` + data.Title + ` </h5>
                                                            <h6 class = "card-subtitle mb-2 text-muted" > ` + data.Year + ` </h6>
                                                             <a href = "#"
-                                                            class = "card-link"> See Details... </a>
+                                                            class = "card-link see-detail"
+                                                            data-toggle = "modal"
+                                                            data-target = "#exampleModal"
+                                                            data-id = "` + data.imdbID + `"
+                                                            > See Details... </a>
                                                         </div>
                                                     </div>
                                                 </div> `);
@@ -58,3 +62,20 @@ $('#search-input').on('keyup', function (e) {
         search_movies();
     }
 });
+
+$('#movie-list').on('click', '.see-detail', function () {
+    $.ajax({
+        type: 'get',
+        url: 'http://www.omdbapi.com',
+        data: {
+            'apikey': 'aa46e00f',
+            'i': $(this).data('id')
+        },
+        dataType: 'json',
+        success: function (result) {
+
+
+
+        }
+    })
+})
