@@ -13,7 +13,9 @@ var urut_surat;
 var detail_surat;
 
 //fungsi daftar surat
-function tampilkanDaftar() {
+function tampilkanDaftar(id_surat_param) {
+    id_surat = id_surat_param;
+
     $.ajax({
         type: 'GET',
         url: 'https://al-quran-8d642.firebaseio.com/data.json',
@@ -36,6 +38,7 @@ function tampilkanDaftar() {
             });
             list_surat += '</ul>';
             $('#list-surat').html(list_surat);
+            $('#listno' + id_surat).removeClass('kolom-daftar');
 
         }
     });
