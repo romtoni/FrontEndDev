@@ -23,8 +23,8 @@ $('#search-button').on('click', function () {
                 let listmovies = result.Search;
 
                 $.each(listmovies, function (i, data) {
-                    $('#movie-list').append(` <div class="col">
-                                                    <div class="card" style="width: 18rem;">
+                    $('#movie-list').append(` <div class="col-md-4">
+                                                    <div class="card mb-3">
                                                         <img src="` + data.Poster + `" class="card-img-top" alt="...">
                                                         <div class="card-body">
                                                             <h5 class = "card-title" > ` + data.Title + ` </h5>
