@@ -20,7 +20,7 @@ function search_movies() {
         success: function (result) {
             //console.log(result);
 
-            if (result.Response == 'True') {
+            if (result.Response === 'True') {
                 let listmovies = result.Search;
                 $.each(listmovies, function (i, data) {
                     $('#movie-list').append(` <div class="col-md-4">
@@ -53,6 +53,43 @@ function search_movies() {
 }
 
 
+function detail_movies() {
+    $.ajax({
+        type: 'get',
+        url: 'http://www.omdbapi.com',
+        data: {
+            'apikey': 'aa46e00f',
+            'i': $('.see-detail').data('id')
+        },
+        dataType: 'json',
+        success: function (movie) {
+            console.log(movie);
+            if (movie.Response === 'True') {
+                $('.modal-body').html(`
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img src="` + movie.Poster + `" class="img-fluid">
+                                            </div>
+
+                                            <div class="row-md-8">
+                                                <ul class = "list-group" >
+                                                    <li class = "list-group-item" ><h3> ` + movie.Title + `</h3></li>
+                                                    <li class = "list-group-item" >Released : ` + movie.Released + `</li> 
+                                                    <li class = "list-group-item" >Genre : ` + movie.Genre + `</li> 
+                                                    <li class = "list-group-item" >Director : ` + movie.Director + `</li> 
+                                                    <li class = "list-group-item" >Actors : ` + movie.Actors + `</li> 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+            }
+        }
+    });
+}
+
+
 $('#search-button').on('click', function () {
     search_movies();
 });
@@ -64,6 +101,8 @@ $('#search-input').on('keyup', function (e) {
 });
 
 $('#movie-list').on('click', '.see-detail', function () {
+    $('.modal-body').html('');
+
     $.ajax({
         type: 'get',
         url: 'http://www.omdbapi.com',
@@ -72,10 +111,29 @@ $('#movie-list').on('click', '.see-detail', function () {
             'i': $(this).data('id')
         },
         dataType: 'json',
-        success: function (result) {
+        success: function (movie) {
+            console.log(movie);
+            if (movie.Response === 'True') {
+                $('.modal-body').html(`
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img src="` + movie.Poster + `" class="img-fluid">
+                                            </div>
 
-
-
+                                            <div class="col-md-8">
+                                                <ul class = "list-group" >
+                                                    <li class = "list-group-item" ><h3> ` + movie.Title + `</h3></li>
+                                                    <li class = "list-group-item" >Released : ` + movie.Released + `</li> 
+                                                    <li class = "list-group-item" >Genre : ` + movie.Genre + `</li> 
+                                                    <li class = "list-group-item" >Director : ` + movie.Director + `</li> 
+                                                    <li class = "list-group-item" >Actors : ` + movie.Actors + `</li> 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+            }
         }
-    })
+    });
 })
